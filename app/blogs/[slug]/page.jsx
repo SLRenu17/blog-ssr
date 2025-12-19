@@ -1,5 +1,9 @@
 import { getAllPosts, getPostBySlug } from "@/lib/wordpress";
 
+/* ✅ Required for dynamic SSR */
+export const dynamic = "force-dynamic";
+
+/* ✅ Generate paths */
 export async function generateStaticParams() {
   const posts = await getAllPosts();
 
@@ -8,6 +12,7 @@ export async function generateStaticParams() {
   }));
 }
 
+/* ✅ SEO Metadata */
 export async function generateMetadata({ params }) {
   const post = await getPostBySlug(params.slug);
 
@@ -26,6 +31,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
+/* ✅ SSR Page */
 export default async function BlogDetail({ params }) {
   const post = await getPostBySlug(params.slug);
 
