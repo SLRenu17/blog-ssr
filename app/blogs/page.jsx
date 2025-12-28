@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAllPosts } from "@/lib/wordpress";
+import "../globals.css"; // ✅ Make sure CSS is imported
 
 export const metadata = {
   title: "Blogs | Pipeline Cleaning Services in UAE",
@@ -12,34 +13,41 @@ export default async function BlogsPage() {
   const posts = await getAllPosts();
 
   return (
-    <main className="container">
-      <h1 className="title">Latest Blogs</h1>
-
-      <div className="grid">
+    <main className="container" style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      <h1 className="title" style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Latest Blogs</h1>
+      <div className="grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}>
         {posts.map((post) => {
-          if (!post.slug) return null;
-
-          const excerpt =
-            post.excerpt
-              ?.replace(/<[^>]+>/g, "")
-              .slice(0, 160) + "...";
-
+          const excerpt = post.excerpt
+            .replace(/<[^>]+>/g, "")
+            .slice(0, 160) + "...";
+          
           return (
-            <article key={post.ID} className="card">
+            <article key={post.ID} className="card" style={{ 
+              border: '1px solid #e5e7eb', 
+              borderRadius: '8px', 
+              padding: '1.5rem',
+              backgroundColor: 'white',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+            }}>
               {post.featured_image && (
                 <Image
                   src={post.featured_image}
                   alt={post.title}
                   width={600}
                   height={350}
+                  style={{ width: '100%', height: 'auto', borderRadius: '4px', marginBottom: '1rem' }}
                 />
               )}
-
-              <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
-              <p>{excerpt}</p>
-
-              {/* ✅ CORRECT LINK FOR basePath */}
-              <Link href={`/${post.slug}`} className="read-more">
+              <h2 
+                dangerouslySetInnerHTML={{ __html: post.title }} 
+                style={{ fontSize: '1.5rem', marginBottom: '1rem' }}
+              />
+              <p style={{ color: '#666', marginBottom: '1rem' }}>{excerpt}</p>
+              <Link href={`/blogs/${post.slug}`} className="read-more" style={{
+                color: '#2563eb',
+                textDecoration: 'none',
+                fontWeight: '500'
+              }}>
                 Read more →
               </Link>
             </article>
