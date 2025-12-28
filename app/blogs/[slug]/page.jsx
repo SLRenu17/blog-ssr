@@ -1,7 +1,12 @@
-import { getAllPosts, getPostBySlug } from "@/lib/wordpress";
+import { getPostBySlug, getAllPosts } from "@/lib/wordpress";
+import Image from "next/image";
+import Link from "next/link";
 
+/* ✅ SEO Metadata */
 export async function generateMetadata({ params }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params; // ✅ FIX
+  const post = await getPostBySlug(slug);
+
   if (!post) return {};
 
   const description = post.excerpt.replace(/<[^>]+>/g, "");
@@ -12,13 +17,18 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: post.title,
       description,
-      type: "article",
+      images: post.featured_image
+        ? [{ url: post.featured_image }]
+        : [],
     },
   };
 }
 
+/* ✅ Page */
 export default async function BlogDetail({ params }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params; // ✅ FIX
+
+  const post = await getPostBySlug(slug);
   const latestPosts = await getAllPosts(5);
 
   if (!post) {
@@ -27,40 +37,42 @@ export default async function BlogDetail({ params }) {
 
   return (
     <main className="container">
-      <div style={{ display: "grid", gridTemplateColumns: "3fr 1fr", gap: "40px" }}>
-        
-        {/* Blog Content */}
-        <article className="blog">
-          <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
+      <article className="blog">
+        <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
 
-          {post.featured_image && (
-            <img
-              src={post.featured_image}
-              alt={post.title}
-              style={{ width: "100%", borderRadius: "12px" }}
-            />
-          )}
-
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+        {post.featured_image && (
+          <Image
+            src={post.featured_image}
+            alt={post.title}
+            width={800}
+            height={400}
+            priority
           />
-        </article>
+        )}
 
-        {/* Sidebar */}
-        <aside>
-          <h3>Latest Posts</h3>
+        <div
+          className="content"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+      </article>
 
-          {latestPosts.map((item) => (
-            <a
-              key={item.ID}
-              href={`/blogs/${item.slug}`}
-              style={{ display: "block", marginBottom: "10px" }}
-              dangerouslySetInnerHTML={{ __html: item.title }}
-            />
-          ))}
-        </aside>
-      </div>
+      {/* ✅ Sidebar */}
+      <aside style={{ marginTop: "60px" }}>
+  <h3>Latest Blogs</h3>
+
+  {latestPosts
+    ?.filter(Boolean)
+    .map((item) => (
+      <Link
+        key={item.slug || item.id} // ✅ FIXED KEY
+        href={`/blogs/${item.slug}`}
+        style={{ display: "block", marginBottom: "10px" }}
+      >
+        {item.title}
+      </Link>
+    ))}
+</aside>
+
     </main>
   );
 }
