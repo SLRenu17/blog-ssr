@@ -1,39 +1,25 @@
 import { getAllPosts, getPostBySlug } from "@/lib/wordpress";
 
-/* ✅ Required for dynamic SSR */
-export const dynamic = "force-dynamic";
-
-/* ✅ Generate paths */
-export async function generateStaticParams() {
-  const posts = await getAllPosts();
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
-/* ✅ SEO Metadata */
 export async function generateMetadata({ params }) {
   const post = await getPostBySlug(params.slug);
-
   if (!post) return {};
+
+  const description = post.excerpt.replace(/<[^>]+>/g, "");
 
   return {
     title: post.title,
-    description: post.excerpt.replace(/<[^>]+>/g, ""),
+    description,
     openGraph: {
       title: post.title,
-      description: post.excerpt.replace(/<[^>]+>/g, ""),
-      images: post.featured_image
-        ? [{ url: post.featured_image }]
-        : [],
+      description,
+      type: "article",
     },
   };
 }
 
-/* ✅ SSR Page */
 export default async function BlogDetail({ params }) {
   const post = await getPostBySlug(params.slug);
+  const latestPosts = await getAllPosts(5);
 
   if (!post) {
     return <h1>Post not found</h1>;
@@ -41,13 +27,40 @@ export default async function BlogDetail({ params }) {
 
   return (
     <main className="container">
-      <article className="blog">
-        <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
-        <div
-          className="content"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-      </article>
+      <div style={{ display: "grid", gridTemplateColumns: "3fr 1fr", gap: "40px" }}>
+        
+        {/* Blog Content */}
+        <article className="blog">
+          <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
+
+          {post.featured_image && (
+            <img
+              src={post.featured_image}
+              alt={post.title}
+              style={{ width: "100%", borderRadius: "12px" }}
+            />
+          )}
+
+          <div
+            className="content"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </article>
+
+        {/* Sidebar */}
+        <aside>
+          <h3>Latest Posts</h3>
+
+          {latestPosts.map((item) => (
+            <a
+              key={item.ID}
+              href={`/blogs/${item.slug}`}
+              style={{ display: "block", marginBottom: "10px" }}
+              dangerouslySetInnerHTML={{ __html: item.title }}
+            />
+          ))}
+        </aside>
+      </div>
     </main>
   );
 }
