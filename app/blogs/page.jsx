@@ -38,11 +38,8 @@ export default async function BlogsPage() {
               <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
               <p>{excerpt}</p>
 
-              {/* ✅ SAFE LINK */}
-              <Link
-                href={`/blogs/${post.slug}`}
-                className="read-more"
-              >
+              {/* ✅ CORRECT LINK FOR basePath */}
+              <Link href={`/${post.slug}`} className="read-more">
                 Read more →
               </Link>
             </article>
