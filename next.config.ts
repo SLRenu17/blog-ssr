@@ -1,5 +1,8 @@
-import type { NextConfig } from "next";
-const nextConfig: NextConfig = {
-  productionBrowserSourceMaps: false,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  basePath: "/blogs",
+  assetPrefix: "/blogs",
+  trailingSlash: true,
 };
-export default nextConfig;
+
+module.exports = nextConfig;
