@@ -1,43 +1,21 @@
-import { getPostBySlug, getAllPosts } from "@/lib/wordpress";
-import Image from "next/image";
+import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import { getPostBySlug, getLatestPosts } from "@/lib/wordpress";
 
-/* ✅ SEO Metadata */
-export async function generateMetadata({ params }) {
-  const { slug } = await params; // ✅ FIX
+export default async function BlogDetails({ params }) {
+  const { slug } = await params;
   const post = await getPostBySlug(slug);
-
-  if (!post) return {};
-
-  const description = post.excerpt.replace(/<[^>]+>/g, "");
-
-  return {
-    title: post.title,
-    description,
-    openGraph: {
-      title: post.title,
-      description,
-      images: post.featured_image
-        ? [{ url: post.featured_image }]
-        : [],
-    },
-  };
-}
-
-/* ✅ Page */
-export default async function BlogDetail({ params }) {
-  const { slug } = await params; // ✅ FIX
-
-  const post = await getPostBySlug(slug);
-  const latestPosts = await getAllPosts(5);
 
   if (!post) {
-    return <h1>Post not found</h1>;
+    notFound();
   }
+
+  const latestPosts = await getLatestPosts();
 
   return (
     <main className="container">
-      <article className="blog">
+      <article className="blog-post">
         <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
 
         {post.featured_image && (
@@ -50,29 +28,17 @@ export default async function BlogDetail({ params }) {
           />
         )}
 
-        <div
-          className="content"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </article>
 
-      {/* ✅ Sidebar */}
-      <aside style={{ marginTop: "60px" }}>
-  <h3>Latest Blogs</h3>
-
-  {latestPosts
-    ?.filter(Boolean)
-    .map((item) => (
-      <Link
-        key={item.slug || item.id} // ✅ FIXED KEY
-        href={`/blogs/${item.slug}`}
-        style={{ display: "block", marginBottom: "10px" }}
-      >
-        {item.title}
-      </Link>
-    ))}
-</aside>
-
+      <aside className="sidebar">
+        <h3>Latest Posts</h3>
+        {latestPosts.map((p) => (
+          <Link key={p.ID} href={`/blogs/${p.slug}`}>
+            <p dangerouslySetInnerHTML={{ __html: p.title }} />
+          </Link>
+        ))}
+      </aside>
     </main>
   );
 }

@@ -1,14 +1,9 @@
-import type { Metadata } from "next";
-import { ReactNode } from "react";
 import "./globals.css";
+import type { ReactNode } from "react";
 
-export const metadata: Metadata = {
-  title: {
-    default: "Pipeline Cleaning Services in UAE",
-    template: "%s | Abhi Drain Line Cleaning",
-  },
-  description:
-    "Professional pipeline and drain line cleaning services in UAE for residential, commercial, and industrial needs.",
+export const metadata = {
+  title: "Abhi Drain Line Cleaning Blogs",
+  description: "Professional drain line cleaning insights and updates",
 };
 
 export default function RootLayout({
@@ -19,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <main className="container">{children}</main>
       </body>
     </html>
   );

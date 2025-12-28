@@ -17,9 +17,12 @@ export default async function BlogsPage() {
 
       <div className="grid">
         {posts.map((post) => {
-          const excerpt = post.excerpt
-            .replace(/<[^>]+>/g, "")
-            .slice(0, 160) + "...";
+          if (!post.slug) return null;
+
+          const excerpt =
+            post.excerpt
+              ?.replace(/<[^>]+>/g, "")
+              .slice(0, 160) + "...";
 
           return (
             <article key={post.ID} className="card">
@@ -35,7 +38,11 @@ export default async function BlogsPage() {
               <h2 dangerouslySetInnerHTML={{ __html: post.title }} />
               <p>{excerpt}</p>
 
-              <Link href={`/blogs/${post.slug}`} className="read-more">
+              {/* ✅ SAFE LINK */}
+              <Link
+                href={`/blogs/${post.slug}`}
+                className="read-more"
+              >
                 Read more →
               </Link>
             </article>
