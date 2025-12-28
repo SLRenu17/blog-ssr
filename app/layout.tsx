@@ -1,5 +1,7 @@
 import "./globals.css";
+import "./header.css";
 import type { ReactNode } from "react";
+import Header from "./components/Header";
 
 export const metadata = {
   title: "Abhi Drain Line Cleaning Blogs",
@@ -14,7 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main className="container">{children}</main>
+        <Header />
+        <main className="container" style={{ marginTop: '90px' }}>{children}</main>
       </body>
     </html>
   );
