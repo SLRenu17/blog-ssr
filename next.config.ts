@@ -17,9 +17,7 @@ const nextConfig: NextConfig = {
     ],
   },
   
-  // ✅ IMPORTANT: Set basePath so all assets load correctly when proxied
-  basePath: '/blogs',
-  assetPrefix: '/blogs',
+
   
   // ✅ Trailing slash for consistent routing
   trailingSlash: true,
