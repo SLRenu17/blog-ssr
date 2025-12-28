@@ -17,9 +17,9 @@ const nextConfig: NextConfig = {
     ],
   },
   
-  // ✅ CRITICAL: This tells Next.js all routes are under /blogs
-  basePath: '/blogs',
-  assetPrefix: '/blogs',
+  // ❌ REMOVE basePath and assetPrefix
+  // basePath: '/blogs',
+  // assetPrefix: '/blogs',
 };
 
 export default nextConfig;
