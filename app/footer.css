@@ -1,0 +1,202 @@
+.footer {
+  background: linear-gradient(to right, #F97316, #f99340);
+  color: #ffffff;
+  padding: 50px 30px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ✅ Container */
+.footer-content-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px;
+  width: 100%;
+}
+
+/* ✅ Footer Section */
+.footer-section {
+  flex: 1 1 300px;
+  min-width: 260px;
+}
+
+/* ✅ Section Titles */
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0c1a25; /* 🔷 Blue heading highlight */
+  margin-bottom: 8px;
+}
+
+/* ✅ Company Tagline */
+.company-tagline {
+  color: #fff8e7;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+/* ✅ Quick Links */
+.quick-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links li {
+  margin-bottom: 6px;
+}
+
+.quick-links a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.quick-links a:hover {
+  color: #0c1a25; /* 🔷 Blue hover */
+}
+
+/* ✅ Social Media */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.social-icons a {
+  color: #ffffff;
+  font-size: 1.15rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #0c1a25; /* 🔷 Blue hover */
+}
+
+/* ✅ WhatsApp & Call */
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.93rem;
+  transition: color 0.3s ease;
+}
+
+.contact-link i {
+  color: #0c1a25; /* 🔷 Blue icons */
+  font-size: 1.1rem;
+}
+
+.contact-link:hover {
+  color: #0c1a25;
+}
+
+/* ✅ Divider & Copyright */
+.footer-divider {
+  border: none;
+  border-top: 1px solid #fff3e0;
+  margin: 20px 0 8px;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 0.83rem;
+  color: #ffe8cc;
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+}
+
+/* ✅ Mobile & Tablet View (2-column grid for Quick Links + Follow Us) */
+@media (max-width: 1024px) {
+  .footer-content-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    gap: 15px 20px;
+    text-align: center;
+  }
+
+  .footer-section {
+    width: 100%;
+  }
+
+  /* First section spans full width */
+  .footer-section:first-child {
+    grid-column: span 2;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: #0c1a25;
+  }
+
+  .company-tagline {
+    font-size: 0.9rem;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .contact-methods {
+    align-items: center;
+  }
+
+  .contact-link {
+    justify-content: center;
+  }
+
+  .footer {
+    padding: 35px 20px 15px;
+  }
+}
+
+/* ✅ Small Mobile (single-column compact) */
+@media (max-width: 600px) {
+  .footer-content-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .footer-section:first-child {
+    grid-column: auto;
+  }
+
+  .section-title {
+    font-size: 1.05rem;
+    color: #0c1a25;
+  }
+
+  .footer {
+    padding: 28px 18px 10px;
+  }
+}
+
+/* ✅ Desktop (3 columns side-by-side) */
+@media (min-width: 1025px) {
+  .footer-content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer-section {
+    flex: 1 1 30%;
+    max-width: 360px;
+  }
+
+  .section-title {
+    margin-bottom: 8px;
+    color: #0c1a25;
+  }
+}
