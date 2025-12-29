@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import "./footer.css";
+import "../footer.css";
 
 const Footer = () => {
   const socialIcons = [
