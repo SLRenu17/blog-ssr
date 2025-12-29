@@ -125,22 +125,29 @@
    HEADER RESPONSIVE STYLING
 ======================== */
 @media (max-width: 768px) {
+  .header-content {
+    justify-content: flex-start;
+  }
+
   .hamburger {
     display: flex;
+    order: 1;           /* ☰ always first */
   }
 
   .logo-container {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    order: 2;           /* logo after hamburger */
+    margin-left: auto;
+    margin-right: auto; /* center logo */
+    position: relative;
+    transform: none;
   }
 
   .header nav {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 70%;
-    height: 120vh;
+    width: 75%;
+    height: 100vh;
     background: linear-gradient(to right, #F97316, #f99340);
     flex-direction: column;
     justify-content: center;
@@ -149,6 +156,7 @@
     gap: 30px;
     transition: left 0.3s ease;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
   }
 
   .header nav.nav-open {
@@ -173,6 +181,7 @@
     transform: translateX(10px);
   }
 }
+
 
 @media (max-width: 480px) {
   .logo {
