@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { getAllPosts } from "@/lib/wordpress";
 import "../globals.css";
 
@@ -29,27 +28,45 @@ export default async function BlogsPage() {
               backgroundColor: 'white',
               boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
             }}>
-              {post.featured_image && (
-                <Image
+              {post.featured_image ? (
+                <img
                   src={post.featured_image}
-                  alt={post.title || "Blog post image"}
-                  width={600}
-                  height={350}
-                  style={{ width: '100%', height: 'auto', borderRadius: '4px', marginBottom: '1rem' }}
-                  unoptimized={true}  // ✅ Add this to bypass image optimization
+                  alt={post.title || "Blog post"}
+                  style={{ 
+                    width: '100%', 
+                    height: '200px',
+                    objectFit: 'cover',
+                    borderRadius: '4px', 
+                    marginBottom: '1rem' 
+                  }}
                 />
+              ) : (
+                <div style={{
+                  width: '100%',
+                  height: '200px',
+                  backgroundColor: '#e5e7eb',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '4px',
+                  marginBottom: '1rem',
+                  color: '#666'
+                }}>
+                  No Image
+                </div>
               )}
+              
               <h2 
                 dangerouslySetInnerHTML={{ __html: post.title }} 
                 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}
               />
               <p style={{ color: '#666', marginBottom: '1rem' }}>{excerpt}</p>
-              <Link href={`/blogs/${post.slug}`} className="read-more" style={{
+              <Link href={`/blogs/${post.slug}`} style={{
                 color: '#2563eb',
                 textDecoration: 'none',
                 fontWeight: '500'
               }}>
-                Read mores →
+                Read more →
               </Link>
             </article>
           );
