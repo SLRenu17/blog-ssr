@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAllPosts } from "@/lib/wordpress";
-import "../globals.css"; // ✅ Make sure CSS is imported
+import "../globals.css";
 
 export const metadata = {
   title: "Blogs | Pipeline Cleaning Services in UAE",
@@ -32,10 +32,11 @@ export default async function BlogsPage() {
               {post.featured_image && (
                 <Image
                   src={post.featured_image}
-                  alt={post.title}
+                  alt={post.title || "Blog post image"}
                   width={600}
                   height={350}
                   style={{ width: '100%', height: 'auto', borderRadius: '4px', marginBottom: '1rem' }}
+                  unoptimized={true}  // ✅ Add this to bypass image optimization
                 />
               )}
               <h2 
