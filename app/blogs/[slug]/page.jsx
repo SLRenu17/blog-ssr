@@ -46,9 +46,9 @@ export default async function BlogDetails({ params }) {
             src={post.featured_image}
             alt={post.title || "Blog post"}
             style={{
-              width: '100%',
+              width: '60%',
               maxWidth: '600px', // ✅ Limit maximum width
-              height: '10%',
+              height: '5%',
               borderRadius: '8px',
               marginBottom: '2rem',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
