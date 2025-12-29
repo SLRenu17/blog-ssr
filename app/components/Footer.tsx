@@ -41,18 +41,6 @@ const Footer: React.FC = () => {
           </p>
         </div>
 
-        {/* Quick Links */}
-        <nav className="footer-section quick-links" aria-label="Quick Links">
-          <h3 className="section-title">Quick Links</h3>
-          <ul>
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/about-us">About Us</Link></li>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/blogs">Blogs</Link></li>
-            <li><Link href="/contact">Contact Us</Link></li>
-          </ul>
-        </nav>
-
         {/* Follow + Contact */}
         <div className="footer-section follow-us">
           <h3 className="section-title">Follow Us</h3>
@@ -86,6 +74,18 @@ const Footer: React.FC = () => {
             </a>
           </div>
         </div>
+
+        {/* Quick Links */}
+        <nav className="footer-section quick-links" aria-label="Quick Links">
+          <h3 className="section-title">Quick Links</h3>
+          <ul>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/about-us">About Us</Link></li>
+            <li><Link href="/services">Services</Link></li>
+            <li><Link href="/blogs">Blogs</Link></li>
+            <li><Link href="/contact">Contact Us</Link></li>
+          </ul>
+        </nav>
       </div>
 
       <hr className="footer-divider" />
