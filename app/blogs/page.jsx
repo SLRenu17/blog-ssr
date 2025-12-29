@@ -49,7 +49,7 @@ export default async function BlogsPage() {
                 textDecoration: 'none',
                 fontWeight: '500'
               }}>
-                Read more →
+                Read mores →
               </Link>
             </article>
           );
