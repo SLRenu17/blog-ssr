@@ -20,6 +20,7 @@ export default function RootLayout({
       <body>
         <Header />
         <main className="container" style={{ marginTop: '90px' }}>{children}</main>
+        <p>hello</p>
         <Footer />
       </body>
     </html>
