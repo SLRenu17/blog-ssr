@@ -4,11 +4,11 @@ import "./footer.css";
 import type { ReactNode } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Script from "next/script"; // ✅ Import Script
 
 export const metadata = {
-  title: "Abhi Drain Line Cleaning Blogs",
-  description: "Professional drain line cleaning insights and updates",
+  title: "Abhi Drain Line Cleaning Services UAE",
+  description:
+    "Professional drain, sewage, and pipeline cleaning services across Dubai, Abu Dhabi, Sharjah, and Ajman.",
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
       </head>
       <body>
         <Header />
-        <main className="container" style={{ marginTop: '90px' }}>
+        <main className="container main-content">
           {children}
         </main>
         <Footer />

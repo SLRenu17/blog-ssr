@@ -1,5 +1,5 @@
 .footer {
-  background: linear-gradient(to right, #F97316, #f99340);
+  background: linear-gradient(to right, #F97316, #fd831e);
   color: #ffffff;
   padding: 50px 30px 20px;
   font-family: "Poppins", sans-serif;
@@ -11,7 +11,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 25px;
-  width: 100%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 /* ✅ Footer Section */
@@ -24,7 +25,7 @@
 .section-title {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #0c1a25; /* 🔷 Blue heading highlight */
+  color: #0c1a25;
   margin-bottom: 8px;
 }
 
@@ -54,7 +55,7 @@
 }
 
 .quick-links a:hover {
-  color: #0c1a25; /* 🔷 Blue hover */
+  color: #0c1a25;
 }
 
 /* ✅ Social Media */
@@ -71,7 +72,7 @@
 }
 
 .social-icons a:hover {
-  color: #0c1a25; /* 🔷 Blue hover */
+  color: #0c1a25;
 }
 
 /* ✅ WhatsApp & Call */
@@ -92,7 +93,7 @@
 }
 
 .contact-link i {
-  color: #0c1a25; /* 🔷 Blue icons */
+  color: #0c1a25;
   font-size: 1.1rem;
 }
 
@@ -115,11 +116,11 @@
   letter-spacing: 0.3px;
 }
 
-/* ✅ Mobile & Tablet View (2-column grid for Quick Links + Follow Us) */
+/* ✅ Mobile & Tablet */
 @media (max-width: 1024px) {
   .footer-content-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columns */
+    grid-template-columns: 1fr 1fr;
     gap: 15px 20px;
     text-align: center;
   }
@@ -128,15 +129,12 @@
     width: 100%;
   }
 
-  /* First section spans full width */
   .footer-section:first-child {
     grid-column: span 2;
   }
 
   .section-title {
     font-size: 1.1rem;
-    margin-bottom: 6px;
-    color: #0c1a25;
   }
 
   .company-tagline {
@@ -160,20 +158,15 @@
   }
 }
 
-/* ✅ Small Mobile (single-column compact) */
+/* ✅ Small Mobile */
 @media (max-width: 600px) {
   .footer-content-container {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  .footer-section:first-child {
-    grid-column: auto;
-  }
-
   .section-title {
     font-size: 1.05rem;
-    color: #0c1a25;
   }
 
   .footer {
@@ -181,7 +174,7 @@
   }
 }
 
-/* ✅ Desktop (3 columns side-by-side) */
+/* ✅ Desktop */
 @media (min-width: 1025px) {
   .footer-content-container {
     display: flex;
@@ -193,10 +186,5 @@
   .footer-section {
     flex: 1 1 30%;
     max-width: 360px;
-  }
-
-  .section-title {
-    margin-bottom: 8px;
-    color: #0c1a25;
   }
 }
