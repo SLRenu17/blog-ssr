@@ -61,7 +61,11 @@ export default async function BlogsPage() {
                 dangerouslySetInnerHTML={{ __html: post.title }} 
                 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}
               />
-              
+               <Link href={`/blogs/${post.slug}`} style={{
+                color: '#2563eb',
+                textDecoration: 'none',
+                fontWeight: '500'
+              }}>
                 Read more →
               </Link>
             </article>
