@@ -48,7 +48,7 @@ export default async function BlogDetails({ params }) {
             style={{
               width: '100%',
               maxWidth: '600px', // ✅ Limit maximum width
-              height: 'auto',
+              height: '50%',
               borderRadius: '8px',
               marginBottom: '2rem',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
