@@ -136,8 +136,7 @@
 
   .logo-container {
     order: 2;           /* logo after hamburger */
-    margin-left: auto;
-    margin-right: auto; /* center logo */
+  /* center logo */
     position: relative;
     transform: none;
   }
