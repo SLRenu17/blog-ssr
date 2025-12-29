@@ -28,7 +28,7 @@ export default async function BlogsPage() {
               backgroundColor: 'white',
               boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
             }}>
-              {post.featured_image ? (
+             {post.featured_image ? (
   <img
     src={post.featured_image}
     alt={post.title || "Blog post"}
@@ -61,7 +61,8 @@ export default async function BlogsPage() {
                 dangerouslySetInnerHTML={{ __html: post.title }} 
                 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}
               />
-               <Link href={`/blogs/${post.slug}`} style={{
+            
+              <Link href={`/blogs/${post.slug}`} style={{
                 color: '#2563eb',
                 textDecoration: 'none',
                 fontWeight: '500'
