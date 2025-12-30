@@ -55,7 +55,7 @@ body {
 
 .cardblogs:hover {
   transform: scale(1.06);
-  borderColor: '#F97316';
+   border-color: #f97316;
   box-shadow: 0 15px 35px rgba(249, 115, 22, 0.25);
 }
 
