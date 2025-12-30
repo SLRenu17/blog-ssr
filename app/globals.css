@@ -46,11 +46,12 @@ body {
   padding: 15px;
   border-radius: 8px;
   display: flex;
+        border: 1px solid #e5e7eb; 
+
   flex-direction: column;
    
 }
 .cardblogs {
-     border: 1px solid #e5e7eb; 
 
   transition: transform 0.3s ease, 
               box-shadow 0.3s ease, 
