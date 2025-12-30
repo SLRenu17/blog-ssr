@@ -26,7 +26,9 @@ export default async function BlogsPage() {
               borderRadius: '8px', 
               padding: '1.5rem',
               backgroundColor: 'white',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+              transform: 'scale(1.06)',
+              borderColor: '#F97316',
+              boxShadow: '0 15px 35px rgba(249, 115, 22, 0.25)'
             }}>
               {post.featured_image ? (
                 <img
