@@ -21,6 +21,7 @@ export default async function BlogDetails({ params }) {
       gridTemplateColumns: '3fr 1fr', 
       gap: '30px',
       padding: '2rem',
+      paddingTop:"30px",
       maxWidth: '1200px',
       margin: '0 auto'
     }}>
