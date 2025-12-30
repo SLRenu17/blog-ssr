@@ -22,13 +22,14 @@ export default async function BlogDetails({ params }) {
       gap: '30px',
       padding: '2rem',
       maxWidth: '1200px',
-      margin: '40px auto'
+      margin: '0 auto'
     }}>
       {/* ✅ Main Article */}
       <article className="blog-post" style={{
         backgroundColor: 'white',
         padding: '2rem',
         borderRadius: '8px',
+        marginTop:'60px',
         boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
       }}>
         <h1 
