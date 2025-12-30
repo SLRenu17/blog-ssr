@@ -93,6 +93,7 @@ const Footer: React.FC = () => {
       <div className="copyright">
         © {new Date().getFullYear()} Abhi Drain Line Cleaning Services UAE.
         All Rights Reserved.
+        <p>Developed By Renuka and Ganesh<p/>
       </div>
     </footer>
   );
