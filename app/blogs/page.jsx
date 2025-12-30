@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/wordpress";
 import "../globals.css";
-import { useState } from "react";
 
-const [isHover, setHover] = useState(false);
 
 export const metadata = {
   title: "Blogs | Pipeline Cleaning Services in UAE",
