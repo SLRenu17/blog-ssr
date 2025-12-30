@@ -24,25 +24,7 @@ export default async function BlogsPage() {
             .slice(0, 160) + "...";
           
           return (
-
-<article
-  key={post.ID}
-  className="card"
-  onMouseEnter={() => setHover(true)}
-  onMouseLeave={() => setHover(false)}
-  style={{
-    border: '1px solid',
-    borderColor: isHover ? '#F97316' : '#e5e7eb',
-    borderRadius: '8px',
-    padding: '1.5rem',
-    backgroundColor: 'white',
-    transform: isHover ? 'scale(1.06)' : 'scale(1)',
-    boxShadow: isHover
-      ? '0 15px 35px rgba(249, 115, 22, 0.25)'
-      : '0 4px 10px rgba(0,0,0,0.05)',
-    transition: 'all 0.3s ease-in-out',
-  }}
->
+<article key={post.ID} className="card" style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'white' }}>
 
               {post.featured_image ? (
                 <img
