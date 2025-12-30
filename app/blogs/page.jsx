@@ -15,7 +15,7 @@ export default async function BlogsPage() {
   return (
     <main className="container" style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       <h1 className="title" style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Latest Blogs</h1>
-      <div className="grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '4rem' }}>
+      <div className="grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '3rem' }}>
         {posts.map((post) => {
           const excerpt = post.excerpt
             .replace(/<[^>]+>/g, "")
@@ -24,7 +24,7 @@ export default async function BlogsPage() {
           return (
           <article
   key={post.ID}
-  className="card"
+  className="cardblogs"
   style={{
     border: '1px solid #e5e7eb',
     borderRadius: '8px',
