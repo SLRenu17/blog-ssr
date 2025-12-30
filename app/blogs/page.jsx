@@ -24,7 +24,17 @@ export default async function BlogsPage() {
             .slice(0, 160) + "...";
           
           return (
-<article key={post.ID} className="card" style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'white' }}>
+          <article
+  key={post.ID}
+  className="card"
+  style={{
+    border: '1px solid #e5e7eb',
+    borderRadius: '8px',
+    padding: '1.5rem',
+    backgroundColor: 'white'
+  }}
+>
+
 
               {post.featured_image ? (
                 <img
