@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/wordpress";
 import "../globals.css";
+import { useState } from "react";
+
+const [isHover, setHover] = useState(false);
 
 export const metadata = {
   title: "Blogs | Pipeline Cleaning Services in UAE",
@@ -14,22 +17,33 @@ export default async function BlogsPage() {
   return (
     <main className="container" style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       <h1 className="title" style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Latest Blogs</h1>
-      <div className="grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}>
+      <div className="grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '4rem' }}>
         {posts.map((post) => {
           const excerpt = post.excerpt
             .replace(/<[^>]+>/g, "")
             .slice(0, 160) + "...";
           
           return (
-            <article key={post.ID} className="card" style={{ 
-              border: '1px solid #e5e7eb', 
-              borderRadius: '8px', 
-              padding: '1.5rem',
-              backgroundColor: 'white',
-              transform: 'scale(1.06)',
-              borderColor: '#F97316',
-              boxShadow: '0 15px 35px rgba(249, 115, 22, 0.25)'
-            }}>
+
+<article
+  key={post.ID}
+  className="card"
+  onMouseEnter={() => setHover(true)}
+  onMouseLeave={() => setHover(false)}
+  style={{
+    border: '1px solid',
+    borderColor: isHover ? '#F97316' : '#e5e7eb',
+    borderRadius: '8px',
+    padding: '1.5rem',
+    backgroundColor: 'white',
+    transform: isHover ? 'scale(1.06)' : 'scale(1)',
+    boxShadow: isHover
+      ? '0 15px 35px rgba(249, 115, 22, 0.25)'
+      : '0 4px 10px rgba(0,0,0,0.05)',
+    transition: 'all 0.3s ease-in-out',
+  }}
+>
+
               {post.featured_image ? (
                 <img
                   src={post.featured_image}
